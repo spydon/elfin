@@ -12,17 +12,14 @@ import JsCmds._
 import JE._
 import code.HashUrl
 import scala.xml.NodeSeq
+import scala.xml.Text
 
-object AjaxUrl {
-  def render = {
-    var url = ""
-    "#url" #> SHtml.text(url, url = _)
-    //"#short" #> SHtml.text(() => addUrl(url))
-    "#short *" #> "test"
-    "#shorten [onclick]" #> SHtml.ajaxInvoke(() => addUrl(url))
-  }
+object AjaxUrl extends LiftScreen {
+  val url = field("Url", "")
+  val length = field("Length", 6, minVal(5, "Too short"))
 
-  def addUrl(url: String) {
-     S.notice(HashUrl("rest"))
+  def finish() {
+    val fullUrl = S.hostName + "/" + HashUrl(url, length)
+    S.notice(<a href={fullUrl}>{fullUrl}</a>)
   }
 }
