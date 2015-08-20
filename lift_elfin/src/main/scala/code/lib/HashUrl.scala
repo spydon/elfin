@@ -1,6 +1,8 @@
+package code
+
 import util.hashing.MurmurHash3._
 
-class HashUrl {
+object HashUrl {
   // 70 safe characters to use for URL's
   // Should still work if language is extended or reduced
   val alpha: List[Char] = ('a' to 'z').toList :::
@@ -8,7 +10,7 @@ class HashUrl {
                           ('0' to '9').toList :::
                           List('$', '_', '.', '+', '*', '!', '(', ')').toList
 
-  def apply(url: String, length: Int) = {
+  def apply(url: String, length: Int = 6) = {
     encode(buildHash(url, length*2, stringSeed))
   }
 

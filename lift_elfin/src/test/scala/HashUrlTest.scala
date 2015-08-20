@@ -1,4 +1,5 @@
 import util.hashing.MurmurHash3._
+import code.HashUrl
 
 object HashUrlTest {
   def randomStringFromCharList(length: Int, chars: Seq[Char]): String = {
@@ -15,10 +16,9 @@ object HashUrlTest {
     randomStringFromCharList(length, chars)
   }
 
-  val hashUrl = new HashUrl()
   def test(tested: Set[String] = Set(), strings: Set[String] = Set(), iterations: Int = 0): (Int, String) = {
     val random = randomAlphaNumericString((Math.random()*50).toInt)
-    val encoded = hashUrl(random, 5)
+    val encoded = HashUrl(random, 5)
     if (tested(encoded) && !strings(random))
       (iterations, encoded)
     else

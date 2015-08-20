@@ -96,13 +96,30 @@ This URL shortener is built with Scala 2.11.7 and the Lift 2.6 Framework.
 \textbf{Disclaimer:} This is the first Lift project that I have 
 coded so please forgive any horrible breaking of convention 
 that I might have unintentionally made. 
-\center
+\begin{center}
 If you have any questions,\\
 feel free to contact me on:\\
 \vspace{10pt}
 Lukas Klingsbo\\
 +46737-42 43 45\\
 lukas.klingsbo@gmail.com\\
+\end{center}
+
+\section{Background}
+The task was to make a scalable URL shortener that deterministically shortened 
+the URL's fed to it.
+
+\section{Design decisions}
+The shortener core code was written with the help of MurmurHash3 which I use 
+to convert the $URL \Rightarrow Int \Rightarrow String \Rightarrow URL$. 
+
+Another design choice that was considered was using an auto incremented value 
+in a database that was to be converted to a string. This would have yielded 
+shorter strings and avoided the problem with collisions that occur when using 
+short hashes. The first design choice was chosen as the exercise stated that 
+the same link preferably always should produce the same short URL. It also 
+gives the advantage that the keys does not have to be synchronized on creation 
+to the distributed KV-store, they still have to be synchronized for fetching.
 
 \pagenumbering{gobble} % Remove page numbers (and reset to 1)
 \end{abstract}

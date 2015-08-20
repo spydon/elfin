@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Elfin</title>
+  </head>
+  <body data-lift-content-id="main">
+    <form action="/shorten">
+      <input name="u">
+      <input type="submit" value="Shorten">
+    </form>
+    <div id="main" data-lift="surround?with=default;at=content">
+      <h3>Shorten your URL's deterministically and drastically</h3>
+      <p>
+      <div class="lift:Msgs"></div>
+      <div class="lift:AjaxUrl">
+        <input id="url" placeholder="URL"/>
+        <button id="shorten">Shorten!</button>
+        <div id="short"></div>
+      </div>
+      </p>
+    </div>
+  </body>
+</html>
