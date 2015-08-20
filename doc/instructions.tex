@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{authblk}
+\usepackage{todonotes}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{float}
+\usepackage{sectsty}
+\usepackage{pdfpages}
+\usepackage[section]{placeins}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\usepackage{setspace}
+\usepackage[toc,page]{appendix}
+\usepackage{framed}
+\usepackage{geometry}
+
+\usepackage{alltt}
+\usepackage{subfig}
+
+% Change section fonts
+\allsectionsfont{\sffamily}
+
+% For code box
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+  \parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+  \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+  \lstset{frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep}
+% End code box
+
+\usepackage{cite}
+
+% General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+% Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4} % 2 may work better
+\setcounter{dbltopnumber}{2} % for 2-column pages
+
+\addtolength{\topmargin}{0.5in}
+
+\usepackage{fancyvrb}
+
+\usepackage{tikz} \usetikzlibrary{trees}
+\usepackage{hyperref} % should always be the last package
+
+% useful colours (use sparingly!):
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
+
+% useful wrappers for algorithmic/Python notation:
+\newcommand{\length}[1]{\text{len}(#1)}
+\newcommand{\twodots}{\mathinner{\ldotp\ldotp}} % taken from clrscode3e.sty
+\newcommand{\Oh}[1]{\mathcal{O}\left(#1\right)}
+
+% useful (wrappers for) math symbols:
+\newcommand{\Cardinality}[1]{\left\lvert#1\right\rvert}
+\newcommand{\Ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\Iff}{\Leftrightarrow}
+\newcommand{\Implies}{\Rightarrow}
+\newcommand{\Intersect}{\cap}
+\newcommand{\Sequence}[1]{\left[#1\right]}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+\newcommand{\SetComp}[2]{\Set{#1\SuchThat#2}}
+\newcommand{\SuchThat}{\mid}
+\newcommand{\Tuple}[1]{\langle#1\rangle}
+\newcommand{\Union}{\cup}
+\usetikzlibrary{positioning,shapes,shadows,arrows}
+
+\renewcommand{\abstractname}{Elfin - URL Shortener}
+
+\title{\textbf{Elfin - URL Shortener}}
+\author{Lukas Klingsbo}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+I was given this task by Uprise, as an exercise to show my capabilities.\\
+This URL shortener is built with Scala 2.11.7 and the Lift 2.6 Framework.
+
+\textbf{Disclaimer:} This is the first Lift project that I have 
+coded so please forgive any horrible breaking of convention 
+that I might have unintentionally made. 
+\center
+If you have any questions,\\
+feel free to contact me on:\\
+\vspace{10pt}
+Lukas Klingsbo\\
++46737-42 43 45\\
+lukas.klingsbo@gmail.com\\
+
+\pagenumbering{gobble} % Remove page numbers (and reset to 1)
+\end{abstract}
+\end{document}
