@@ -6,8 +6,6 @@ import Helpers._
 
 import common._
 import http._
-import net.liftmodules.JQueryModule
-import net.liftweb.http.js.jquery._
 
 import code.Get
 
@@ -29,14 +27,9 @@ class Boot {
       Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
     // Force the request to be UTF-8
-    LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
+    //LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
     // Init the stateless GET-module
     LiftRules.statelessDispatch.append(Get)
-
-    // Init the jQuery module, see http://liftweb.net/jquery for more information.
-    LiftRules.jsArtifacts = JQueryArtifacts
-    JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
-    JQueryModule.init()
   }
 }

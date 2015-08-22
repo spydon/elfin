@@ -9,7 +9,7 @@ import code.HashUrl
 
 object ElfinScreen extends LiftScreen {
   val url = field("Url", "", trim, valMinLen(1, "Enter URL"))
-  val length = field("Length", 6, minVal(5, "Too short"))
+  val length = field("Key length", 6, minVal(5, "Too short"), maxVal(50, "Too long"))
 
   def finish() {
     val fullUrl = (url.contains("://")) ? url.toString | "http://" + url
