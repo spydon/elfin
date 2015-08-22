@@ -1,6 +1,7 @@
 package code
 
 import util.hashing.MurmurHash3._
+import com.redis._
 
 object HashUrl {
   // 70 safe characters to use for URL's
@@ -11,7 +12,8 @@ object HashUrl {
                           List('$', '_', '.', '+', '*', '!', '(', ')').toList
 
   def apply(url: String, length: Int = 6) = {
-    encode(buildHash(url, length*2, stringSeed))
+    val shortUrl = encode(buildHash(url, length*2, stringSeed))
+    store(shortUrl, url)
   }
 
   def buildHash(url: String, length: Int, seed: Int, hash: String = "") : String = {
@@ -22,14 +24,19 @@ object HashUrl {
       buildHash(url, length, seed+1, fullHash)
   }
 
-  // TODO: Transform to higher order function
   def encode(hash: String, chars: List[Char] = List()) : String = {
     hash match {
       case "" => chars.mkString
       case _ =>
         val splitHash = hash splitAt 2
-        val encoded = alpha(splitHash._1.toInt%alpha.length)
+        val encoded = alpha(splitHash._1.toInt % alpha.length)
         encode(splitHash._2, encoded :: chars)
     }
+  }
+
+  val r = new RedisClient("localhost", 6379)
+  def store(shortUrl: String, url: String) = {
+    r.set(shortUrl, url)
+    shortUrl
   }
 }
